@@ -1,16 +1,32 @@
 const Api = {
-apiUrl: 'http://localhost:3005/priori',
-fetchAll: () => fetch(Api.apiUrl),
-fetchById: id => fetch(`${Api.apiUrl}/${id}`),
-fetchToPost: (tarefa) => {
-    return fetch(Api.apiUrl, {
-        method: 'POST',
-        headers: new Headers({
-            "Content-Type" : "application/json",
-        }),
-        body: JSON.stringify(tarefa)
-    })
-},
+    apiUrl: 'http://localhost:3005/priori',
+    fetchAll: () => fetch(Api.apiUrl),
+    fetchById: id => fetch(`${Api.apiUrl}/${id}`),
+    fetchToPost: (tarefa) => {
+        return fetch(`${Api.apiUrl}/add`, {
+            method: 'POST',
+            headers: new Headers({
+                "Content-Type": "application/json",
+            }),
+            body: JSON.stringify(tarefa)
+        })
+    },
+
+    fetchAndPut: (tarefa, id) => {
+        return fetch(`${Api.apiUrl}/${id}/edit`, {
+            method: 'PUT',
+            headers: new Headers({
+                "Content-Type": "application/json",
+            }),
+            body: JSON.stringify(tarefa)
+        })
+    },
+
+    fetchAndDelete: (id) => {
+        return fetch(`${Api.apiUrl}/delete/${id}`, {
+            method: 'DELETE'
+        })
+    }
 
 }
 

@@ -2,8 +2,10 @@ import React from 'react';
 import Api from '../../api/api'
 import { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import moment from 'moment';
+import './lista.css';
+import { Link } from 'react-router-dom'
 
 const Lista = () => {
   const [tarefas, setTarefas] = useState([]);
@@ -22,11 +24,7 @@ const Lista = () => {
 
   const transformDate = (prazo) => {
     return moment(prazo).utc().format('DD/MM/YYYY');
-    // const dateUTC = Date.UTC(deadline.getUTCFullYear(), deadline.getUTCMonth(), deadline.getUTCDate(),
-    // deadline.getUTCHours());
-    // console.log(dateUTC)
-    // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    // const newDate = new Date(dateUTC).toLocaleDateString('pt-br', options );
+    
 
   }
 
@@ -42,17 +40,23 @@ const Lista = () => {
 
       {
         tarefas.map((tarefa, index) => (
-          <Card data={tarefa} key={index} className="text-center">
+        <Link to={`/${tarefa._id}`} key={index} className="card-link">
+          <Card data={tarefa} className="text-center">
             <Card.Header>{tarefa.titulo}</Card.Header>
+            <Card.Header style={tarefa.prioridade === "alta" ? { color: "red" } : { color: "green" }}>Prioridade: {tarefa.prioridade}</Card.Header>
             <Card.Body>
               <Card.Title> Terminar até: {transformDate(tarefa.prazo)}</Card.Title>
               <Card.Text>
                 {tarefa.detalhes}
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              <Card.Text>Situação: {tarefa.status}</Card.Text>
+              {/* <Button variant="dark" href={`/edit/${tarefa._id}`}>Editar</Button> */}
+              
+              
             </Card.Body>
-            <Card.Footer className="text-muted">Prazo termina em {calculaPrazo(tarefa.prazo)} dias </Card.Footer>
+            <Card.Footer className="text-prazo" style={{ color: calculaPrazo(tarefa.prazo) > 6 ? "blue" : "red" }}>Prazo termina em {calculaPrazo(tarefa.prazo)} dias </Card.Footer>
           </Card>
+          </Link>
         ))
       }
     </div>

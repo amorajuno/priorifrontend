@@ -1,0 +1,16 @@
+img{
+    max-width: 10vw;
+}
+
+.text-prazo {
+    background-color: rgba(126, 124, 124, 0.493);
+}
+
+.card-link {
+    text-decoration: none;
+    color: default;
+}
+
+a {
+    text-decoration: none;
+}

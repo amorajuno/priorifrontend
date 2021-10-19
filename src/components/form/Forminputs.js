@@ -1,63 +1,111 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
-import "react-datetime/css/react-datetime.css";
-import Datetime from "react-datetime";
-import moment from 'moment';
-import 'moment/locale/pt';
+import './Forminputs.css';
+import Api from '../.././api/api';
 
-function Forminputs() {
+
+const Forminputs = (props) => {
+    const history = props.history;
+
+    const handleSubmit = async (evento) => {
+        evento.preventDefault();
+
+        const titulo = evento.target.titulo.value;
+        const detalhes = evento.target.detalhes.value;
+        const prazo = evento.target.prazo.value;
+        const prioridade = evento.target.prioridade.value;
+        const status = evento.target.status.value;
+
+        const tarefa = {
+            titulo,
+            detalhes,
+            prazo,
+            status,
+            prioridade
+        }
+
+        try {
+            const response = await Api.fetchToPost(tarefa)
+            const result = await response.json;
+            alert(result.message);
+            console.log(result)
+            history.push('/');
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
-        <div className="form-box-inputs">
-            <Form>
-                <Row className="align-items-center">
-                    <Col xs="auto">
-                        <Form.Label htmlFor="inlineFormInput" visuallyHidden>
-                            Name
-                        </Form.Label>
-                        <Form.Control
-                            className="mb-2"
-                            id="inlineFormInput"
-                            placeholder="Título da tarefa"
-                        />
-                    </Col>
-                    <Col xs="auto">
-                        <Form.Label htmlFor="inlineFormInputGroup" visuallyHidden>
-                            Descrição
-                        </Form.Label>
-                        <InputGroup className="mb-2">
-                            <InputGroup.Text>@</InputGroup.Text>
-                            <FormControl id="inlineFormInputGroup" placeholder="Descrição" />
-                        </InputGroup>
-                    </Col>
-                <Col xs="auto">
-                        <Form.Label htmlFor="inlineFormInputGroup" >
-                            Prazo
-                        </Form.Label>
-                        <Datetime locale="pt" input={false} />
-                    </Col>
-                    <Col xs="auto">
-                        <Form.Check
-                            type="checkbox"
-                            id="autoSizingCheck"
-                            className="mb-2"
-                            label="Urgente/Em atraso"
-                        />
-                    </Col>
-                    <Col xs="auto">
-                        <Button type="submit" className="mb-2">
-                            Submit
-                        </Button>
-                    </Col>
-                </Row>
 
-            </Form>
-
+        <div className="container cadastro">
+            <div className="card mt-4">
+                <div className="card-title">
+                    <div className="row align-items-center">
+                        <div className="col ">
+                            <h3>Cadastre uma prioridade</h3>
+                        </div>
+                    </div>
+                </div>
+                <div className="card-body">
+                    <form onSubmit={handleSubmit}>
+                        <div className="row">
+                            <div className="col">
+                                <div className="form-floating mb-3">
+                                    <input type="text" required="true" className="form-control" name="titulo" id="floatingInput" placeholder="Digite o Titulo" />
+                                    <label htmlFor="floatingInput">Titulo</label>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="form-floating">
+                                    <input type="date" className="form-control" name="prazo" id="floatingprazo"  />
+                                    <label htmlFor="floatingprazo">Prazo</label>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="form-floating">
+                                    <select 
+                                        className="form-control"
+                                        name="status"
+                                        id="floatingstatus"
+                                        
+                                    >
+                                        <option value="fazer">Fazer</option>
+                                        <option value="fazendo">Fazendo</option>
+                                        <option value="concluido">Concluído</option>
+                                    </select>
+                                    <label htmlFor="floatingstatus">Status</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <div className="form-floating mb-3">
+                                    <input type="text" className="form-control" name="detalhes" id="floatingInput" placeholder="Detalhes" />
+                                    <label htmlFor="floatingInput">Detalhes</label>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="form-floating">
+                                    <select className="form-control" name="prioridade" id="floatingprioridade" placeholder="Defina a prioridade">
+                                        <option value="alta">Alta</option>
+                                        <option value="media">Média</option>
+                                        <option value="baixa">Baixa</option>
+                                    </select>
+                                    <label htmlFor="floatingprioridade">Prioridade</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <button className="btn btn-dark" type="submit">Enviar</button>
+                                <button className="btn btn-outline-default">Voltar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
+
     )
 }
 

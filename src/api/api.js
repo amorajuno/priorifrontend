@@ -1,5 +1,5 @@
 const Api = {
-    apiUrl: 'http://localhost:3005/priori',
+    apiUrl: 'https://to-priori-api.herokuapp.com/priori',
     fetchAll: () => fetch(Api.apiUrl),
     fetchById: id => fetch(`${Api.apiUrl}/${id}`),
     fetchToPost: (tarefa) => {

@@ -25,7 +25,7 @@ const Forminputs = (props) => {
 
         try {
             const response = await Api.fetchToPost(tarefa)
-            const result = await response.json;
+            const result = await response.json();
             alert(result.message);
             console.log(result)
             history.push('/');

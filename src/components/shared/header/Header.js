@@ -5,8 +5,8 @@ function Header() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
         <div className="container">
-          <button className="nav-toggler-icon" type="button">To priori</button>
-          <button className="navbar-toggler" type="button" data-bs-toggle="expand" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+          <button className="nav-toggler-icon" type="button" href="/">To priori</button>
+          <button className="navbar-toggler" type="button" data-bs-toggle="expand" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">

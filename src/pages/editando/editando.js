@@ -43,8 +43,6 @@ const Editando = (props) => {
 
     const transformDate = (prazo) => {
         return moment(prazo).utc().format('YYYY-MM-DD');
-
-
     }
 
     return (
@@ -103,6 +101,7 @@ const Editando = (props) => {
                                     <select className="form-control"
                                         name="prioridade"
                                         id="floatingprioridade"
+                                        value={tarefa.prioridade}
                                         onChange={handleUpdate}
                                     >
                                         <option value="alta">Alta</option>
@@ -118,6 +117,7 @@ const Editando = (props) => {
                                         className="form-control"
                                         name="status"
                                         id="floatingstatus"
+                                        value={tarefa.status}
                                         onChange={handleUpdate}
                                     >
                                         <option value="fazer">Fazer</option>

@@ -36,17 +36,17 @@ const Lista = () => {
 
 
   return (
-    <div className="row row-cols-1 row-cols-md-3 g-4 mt-3">
+    <div className="row row-cols-1 row-cols-md-4 g-4 mt-3 mx-2 mb-5 justify-content-center">
 
       {
         tarefas.map((tarefa, index) => (
         <Link to={`/${tarefa._id}`} key={index} className="card-link">
-          <Card data={tarefa} className="text-center">
-            <Card.Header>{tarefa.titulo}</Card.Header>
+          <Card data={tarefa} className="text-center vh-80">
+            <Card.Header className="text-truncate">{tarefa.titulo}</Card.Header>
             <Card.Header style={tarefa.prioridade === "alta" ? { color: "red" } : { color: "green" }}>Prioridade: {tarefa.prioridade}</Card.Header>
             <Card.Body>
               <Card.Title> Terminar até: {transformDate(tarefa.prazo)}</Card.Title>
-              <Card.Text>
+              <Card.Text className="text-truncate">
                 {tarefa.detalhes}
               </Card.Text>
               <Card.Text>Situação: {tarefa.status}</Card.Text>

@@ -41,15 +41,15 @@ const SingleView = (props) => {
                     <h4 className="text-center">Situação:  {tarefa.status}</h4>
                     <h5 className="text-center">Prioridade: {tarefa.prioridade}</h5>
                     <div className="btn-group mt-3 w-100 d-flex align-items-center justify-content-center">
-                        <Link to={`/${tarefa._id}/edit`} className="btn btn-outline-info">Editar</Link>
-                        <button className="btn btn-outline-danger" onClick={onOpenModal}>Excluir</button>
+                        <Link to={`/${tarefa._id}/edit`} className="btn btn-outline-info mx-1">Editar</Link>
+                        <button className="btn btn-outline-danger mx-1" onClick={onOpenModal}>Excluir</button>
                     </div>
                 </div>
             </div>
             <Modal open={open} onClose={onCloseModal} center>
                 <h2>Deseja realmente Excluir?</h2>
-                <button className="btn btn-danger" onClick={onCloseModal}>Não</button>
-                <button className="btn btn-success" onClick={handleDelete}>Sim</button>
+                <button className="btn btn-danger mx-2" onClick={onCloseModal}>Não</button>
+                <button className="btn btn-success mx-2" onClick={handleDelete}>Sim</button>
             </Modal>
         </div>
     )

@@ -51,7 +51,7 @@ const Forminputs = (props) => {
                         <div className="row">
                             <div className="col">
                                 <div className="form-floating mb-3">
-                                    <input type="text" required="true" className="form-control" name="titulo" id="floatingInput" placeholder="Digite o Titulo" />
+                                    <input type="text" required={true} className="form-control" name="titulo" id="floatingInput" placeholder="Digite o Titulo" />
                                     <label htmlFor="floatingInput">Titulo</label>
                                 </div>
                             </div>

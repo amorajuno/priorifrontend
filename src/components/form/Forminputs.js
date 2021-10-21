@@ -69,7 +69,7 @@ const Forminputs = (props) => {
                                         id="floatingstatus"
                                         
                                     >
-                                        <option value="fazer">Fazer</option>
+                                        <option value="fazer" defaultValue>Fazer</option>
                                         <option value="fazendo">Fazendo</option>
                                         <option value="concluido">Concluído</option>
                                     </select>
@@ -87,7 +87,7 @@ const Forminputs = (props) => {
                             <div className="col">
                                 <div className="form-floating">
                                     <select className="form-control" name="prioridade" id="floatingprioridade" placeholder="Defina a prioridade">
-                                        <option value="alta">Alta</option>
+                                        <option value="alta" defaultValue>Alta</option>
                                         <option value="media">Média</option>
                                         <option value="baixa">Baixa</option>
                                     </select>

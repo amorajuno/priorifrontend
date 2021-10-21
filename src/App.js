@@ -6,6 +6,9 @@ import Lista from './components/lista/lista';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Editando from './pages/editando/editando';
 import SingleView from './pages/singleView/SingleView'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.js';
+
 
 
 function App() {
